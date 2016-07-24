@@ -18,36 +18,5 @@
     "name": "Andrija Petrovic",
     "email": "andrija.hers@gmail.com"
   },
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/allex-lowlevel-libs/checks/issues"
-  },
-  "homepage": "https://github.com/allex-lowlevel-libs/checks#readme",
-  "gitHead": "ce646f03d1d7c85099669718e4c616351ad0fc75",
-  "_id": "allex_checkslowlevellib@1.0.0",
-  "_shasum": "1635fa7756adee49143cbbe2deb8c770ebee772b",
-  "_from": "allex_checkslowlevellib@>=1.0.0 <2.0.0",
-  "_npmVersion": "2.14.12",
-  "_nodeVersion": "4.3.1",
-  "_npmUser": {
-    "name": "andrija-hers",
-    "email": "andrija.hers@gmail.com"
-  },
-  "maintainers": [
-    {
-      "name": "andrija-hers",
-      "email": "andrija.hers@gmail.com"
-    }
-  ],
-  "dist": {
-    "shasum": "1635fa7756adee49143cbbe2deb8c770ebee772b",
-    "tarball": "https://registry.npmjs.org/allex_checkslowlevellib/-/allex_checkslowlevellib-1.0.0.tgz"
-  },
-  "_npmOperationalInternal": {
-    "host": "packages-16-east.internal.npmjs.com",
-    "tmp": "tmp/allex_checkslowlevellib-1.0.0.tgz_1465125539738_0.9319088708143681"
-  },
-  "directories": {},
-  "_resolved": "https://registry.npmjs.org/allex_checkslowlevellib/-/allex_checkslowlevellib-1.0.0.tgz",
-  "readme": "ERROR: No README data found!"
+  "license": "ISC"
 }
