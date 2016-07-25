@@ -137,8 +137,6 @@ function isArrayOfFunctions (af) {
   return af.every(isFunction);
 }
 
-module.exports = isEqual;
-
 module.exports =  {
   isFunction : isFunction,
   isArray: isArray,
