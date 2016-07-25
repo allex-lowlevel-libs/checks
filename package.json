@@ -10,6 +10,9 @@
     "type": "git",
     "url": "git+https://github.com/allex-lowlevel-libs/checks.git"
   },
+  "devDependencies": {
+    "chai": "3.x"
+  },
   "keywords": [
     "ecosystem:AllexJS",
     "check"
