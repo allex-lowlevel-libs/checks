@@ -33,23 +33,25 @@ describe('Testing \'Checks\' lib', function(){
     expect(lib.isArray(true)).to.be.false;
   });
   it('isUndef', function(){
+    var obj;
     expect(lib.isUndef(undefined)).to.be.true;
     expect(lib.isUndef(fn)).to.be.false;
     expect(lib.isUndef(null)).to.be.false;
     expect(lib.isUndef([])).to.be.false;
     expect(lib.isUndef("")).to.be.false;
-    var obj = { a : null };
+    obj = { a : null };
     expect(lib.isUndef(obj.a)).to.be.false;
     delete obj.a;
     expect(lib.isUndef(obj.a)).to.be.true;
   });
   it('defined', function(){
+    var obj;
     expect(lib.defined(undefined)).not.to.be.true;
     expect(lib.defined(fn)).not.to.be.false;
     expect(lib.defined(null)).not.to.be.false;
     expect(lib.defined([])).not.to.be.false;
     expect(lib.defined("")).not.to.be.false;
-    var obj = { a : null };
+    obj = { a : null };
     expect(lib.defined(obj.a)).not.to.be.false;
     delete obj.a;
     expect(lib.defined(obj.a)).not.to.be.true;

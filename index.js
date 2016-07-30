@@ -27,6 +27,7 @@ function has (obj, key) {
 // equality handling ripped from lodash (https://github.com/lodash)
 // Internal recursive comparison function for `isEqual`.
 function eq(a, b, aStack, bStack) {
+  var type;
   // Identical objects are equal. `0 === -0`, but they aren't identical.
   // See the [Harmony `egal` proposal](http://wiki.ecmascript.org/doku.php?id=harmony:egal).
   if (a === b) return a !== 0 || 1 / a === 1 / b;
@@ -35,7 +36,7 @@ function eq(a, b, aStack, bStack) {
   // `NaN`s are equivalent, but non-reflexive.
   if (a !== a) return b !== b;
   // Exhaust primitive checks
-  var type = typeof a;
+  type = typeof a;
   if (type !== 'function' && type !== 'object' && typeof b != 'object') return false;
   return deepEq(a, b, aStack, bStack);
 };
@@ -43,6 +44,7 @@ function eq(a, b, aStack, bStack) {
 // Internal recursive comparison function for `isEqual`.
 function deepEq (a, b, aStack, bStack) {
   // Unwrap any wrapped objects.
+  var areArrays,aCtor,length,keys;
   var className = toString.call(a);
   if (className !== toString.call(b)) return false;
   switch (className) {
@@ -67,13 +69,13 @@ function deepEq (a, b, aStack, bStack) {
       return +a === +b;
   }
 
-  var areArrays = className === '[object Array]';
+  areArrays = className === '[object Array]';
   if (!areArrays) {
     if (typeof a != 'object' || typeof b != 'object') return false;
 
     // Objects with different constructors are not equivalent, but `Object`s or `Array`s
     // from different frames are.
-    var aCtor = a.constructor, bCtor = b.constructor;
+    aCtor = a.constructor, bCtor = b.constructor;
     if (aCtor !== bCtor && !(_.isFunction(aCtor) && aCtor instanceof aCtor &&
                              _.isFunction(bCtor) && bCtor instanceof bCtor)
                         && ('constructor' in a && 'constructor' in b)) {
@@ -87,7 +89,7 @@ function deepEq (a, b, aStack, bStack) {
   // It's done here since we only need them for objects and arrays comparison.
   aStack = aStack || [];
   bStack = bStack || [];
-  var length = aStack.length;
+  length = aStack.length;
   while (length--) {
     // Linear search. Performance is inversely proportional to the number of
     // unique nested structures.
@@ -109,7 +111,7 @@ function deepEq (a, b, aStack, bStack) {
     }
   } else {
     // Deep compare objects.
-    var keys = Object.keys(a), key;
+    keys = Object.keys(a), key;
     length = keys.length;
     // Ensure that both objects contain the same number of properties before comparing deep equality.
     if (Object.keys(b).length !== length) return false;
