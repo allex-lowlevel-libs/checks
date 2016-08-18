@@ -49,7 +49,7 @@ function eq(a, b, aStack, bStack) {
 // Internal recursive comparison function for `isEqual`.
 function deepEq (a, b, aStack, bStack) {
   // Unwrap any wrapped objects.
-  var areArrays,aCtor,length,keys;
+  var areArrays,aCtor,length,keys,key;
   var className = toString.call(a);
   if (className !== toString.call(b)) return false;
   switch (className) {
@@ -116,7 +116,7 @@ function deepEq (a, b, aStack, bStack) {
     }
   } else {
     // Deep compare objects.
-    keys = Object.keys(a), key;
+    keys = Object.keys(a);
     length = keys.length;
     // Ensure that both objects contain the same number of properties before comparing deep equality.
     if (Object.keys(b).length !== length) return false;
