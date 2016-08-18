@@ -179,4 +179,18 @@ describe('Testing \'Checks\' lib', function(){
     fnArr[0] = null;
     expect(lib.isArrayOfFunctions(fnArr)).to.be.false;
   });
+
+  it ('isInteger', function () {
+    expect(lib.isInteger (undefined)).to.be.false;
+    expect(lib.isInteger (null)).to.be.false;
+    expect(lib.isInteger (22)).to.be.true;
+    expect(lib.isInteger (-65)).to.be.true;
+    expect(lib.isInteger (432.22)).to.be.false;
+    expect(lib.isInteger (-821.1233123)).to.be.false;
+    expect(lib.isInteger ('1231')).to.be.true;
+    expect(lib.isInteger ('-432')).to.be.true;
+    expect(lib.isInteger ('bla')).to.be.false;
+    expect(lib.isInteger ('')).to.be.false;
+    expect(lib.isInteger(0)).to.be.true;
+  });
 });

@@ -13,6 +13,11 @@ function isNumber(val) {return 'number' === typeof(val) || val instanceof Number
 function isNull(val) {return val === null;}
 function isNotNull(val) {return val !== null;}
 function isBoolean(val) {return 'boolean' === typeof(val);}
+function isInteger (val) {
+  if (isNaN(val)) return false;
+  var x = parseFloat(val);
+  return (x | 0) === x;
+}
 function isVal(val) {return !(isUndef(val) || isNull(val));}
 function isDefinedAndNotNull(val) {
   if (isUndef(val)) {
@@ -153,5 +158,6 @@ module.exports =  {
   isBoolean:isBoolean,
   isVal:isVal,
   isEqual: isEqual,
-  has : has
+  has : has,
+  isInteger : isInteger
 };
