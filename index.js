@@ -81,8 +81,8 @@ function deepEq (a, b, aStack, bStack) {
     // Objects with different constructors are not equivalent, but `Object`s or `Array`s
     // from different frames are.
     aCtor = a.constructor, bCtor = b.constructor;
-    if (aCtor !== bCtor && !(_.isFunction(aCtor) && aCtor instanceof aCtor &&
-                             _.isFunction(bCtor) && bCtor instanceof bCtor)
+    if (aCtor !== bCtor && !(isFunction(aCtor) && aCtor instanceof aCtor &&
+                             isFunction(bCtor) && bCtor instanceof bCtor)
                         && ('constructor' in a && 'constructor' in b)) {
       return false;
     }

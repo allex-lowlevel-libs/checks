@@ -1,6 +1,6 @@
 {
   "name": "allex_checkslowlevellib",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "JavaScript checks related to types and data structure",
   "main": "index.js",
   "scripts": {
