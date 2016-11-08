@@ -193,4 +193,8 @@ describe('Testing \'Checks\' lib', function(){
     expect(lib.isInteger ('')).to.be.false;
     expect(lib.isInteger(0)).to.be.true;
   });
+
+  it ('isNumber', function () {
+    expect(lib.isNumber(parseInt(null))).to.be.false;
+  });
 });

@@ -9,7 +9,10 @@ function defined (val) {
   return val!==nista;
 }
 function isString(val) {return 'string' === typeof(val) || val instanceof String;}
-function isNumber(val) {return 'number' === typeof(val) || val instanceof Number;}
+function isNumber(val) {
+  if (isNaN(val)) return false;
+  return 'number' === typeof(val) || val instanceof Number;
+}
 function isNull(val) {return val === null;}
 function isNotNull(val) {return val !== null;}
 function isBoolean(val) {return 'boolean' === typeof(val);}
