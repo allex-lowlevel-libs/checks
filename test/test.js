@@ -192,6 +192,7 @@ describe('Testing \'Checks\' lib', function(){
     expect(lib.isInteger ('bla')).to.be.false;
     expect(lib.isInteger ('')).to.be.false;
     expect(lib.isInteger(0)).to.be.true;
+    expect(lib.isInteger(9999990000)).to.be.true;
   });
 
   it ('isNumber', function () {

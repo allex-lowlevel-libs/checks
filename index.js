@@ -19,7 +19,7 @@ function isBoolean(val) {return 'boolean' === typeof(val);}
 function isInteger (val) {
   if (isNaN(val)) return false;
   var x = parseFloat(val);
-  return (x | 0) === x;
+  return Math.round(x) === x;
 }
 function isVal(val) {return !(isUndef(val) || isNull(val));}
 function isDefinedAndNotNull(val) {
