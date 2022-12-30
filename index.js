@@ -29,7 +29,17 @@ function isDefinedAndNotNull(val) {
   return val!==null;
 }
 function has (obj, key) {
-  return 'object' === typeof(obj) && obj != null && hasOwnProperty.call(obj, key);
+  var o, ret;
+  if (isArrayOfStrings(key)) {
+    o = obj;
+    ret = key.every(has.bind(null, o))
+    o = null;
+    return ret;
+  }
+  if (isString(key)) {
+    return 'object' === typeof(obj) && obj != null && hasOwnProperty.call(obj, key);
+  }
+  throw new Error('"has" needs a key that is either a String or Array[String]');
 }
 
 // equality handling ripped from lodash (https://github.com/lodash)
@@ -140,17 +150,42 @@ function isEqual (a,b) {
   return eq(a,b);
 }
 
-function isArrayOfFunctions (af) {
-  if (!isArray(af)) {
-    return false;
+function isArrayOfHaving (arry, fn) {
+  return isArray(arry) && arry.every(fn);
+}
+function isArrayOfStrings (arry) {
+  return isArrayOfHaving(arry, isString);
+}
+function isArrayOfNumbers (arry) {
+  return isArrayOfHaving(arry, isNumber);
+}
+function isArrayOfFunctions (arry) {
+  return isArrayOfHaving(arry, isFunction);
+}
+function hasreverse (key, obj) {
+  return has(obj, key);
+}
+function isArrayOfObjectsWithProperty (arry, propname) {
+  var ret = isArrayOfHaving(arry, hasreverse.bind(null, propname));
+  propname = null;
+  return ret;
+}
+function isArrayOfObjectsWithProperties (arry, propnames) {
+  var ret;
+  if (!isArrayOfStrings(propnames)) {
+    throw new Error('propnames provided has to be an Array[String]');
   }
-  return af.every(isFunction);
+  ret = isArrayOfHaving(arry, hasreverse.bind(null, propnames));
+  propnames = null;
+  return ret;
+}
+function isNonEmptyString (str) {
+  return isString(str) && str.length>0;
 }
 
 module.exports =  {
   isFunction : isFunction,
   isArray: isArray,
-  isArrayOfFunctions: isArrayOfFunctions,
   isUndef: isUndef,
   defined : defined,
   isDefinedAndNotNull : isDefinedAndNotNull,
@@ -162,5 +197,12 @@ module.exports =  {
   isVal:isVal,
   isEqual: isEqual,
   has : has,
-  isInteger : isInteger
+  isInteger : isInteger,
+  isArrayOfHaving: isArrayOfHaving,
+  isArrayOfStrings: isArrayOfStrings,
+  isArrayOfNumbers: isArrayOfNumbers,
+  isArrayOfFunctions: isArrayOfFunctions,
+  isArrayOfObjectsWithProperty: isArrayOfObjectsWithProperty,
+  isArrayOfObjectsWithProperties: isArrayOfObjectsWithProperties,
+  isNonEmptyString: isNonEmptyString
 };
