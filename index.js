@@ -182,6 +182,9 @@ function isArrayOfObjectsWithProperties (arry, propnames) {
 function isNonEmptyString (str) {
   return isString(str) && str.length>0;
 }
+function isNonEmptyArray (arry) {
+  return isArray(arry) && arry.length>0;
+}
 
 module.exports =  {
   isFunction : isFunction,
@@ -204,5 +207,6 @@ module.exports =  {
   isArrayOfFunctions: isArrayOfFunctions,
   isArrayOfObjectsWithProperty: isArrayOfObjectsWithProperty,
   isArrayOfObjectsWithProperties: isArrayOfObjectsWithProperties,
-  isNonEmptyString: isNonEmptyString
+  isNonEmptyString: isNonEmptyString,
+  isNonEmptyArray: isNonEmptyArray
 };
